@@ -2,7 +2,7 @@ var Note = require("../model/note");
 var noteService = require("../services/note-service");
 
 module.exports.showNotes = function (req, res){
-
+ res.send('test');
 };
 
 module.exports.showCreateNoteView = function(req, res){
@@ -16,7 +16,7 @@ module.exports.saveNote = function(req, res){
     var dueDate = req.body.dueDate;
     var isFinished = req.body.isFinished;
     try{
-        var newNode = new Note(null, title, description, priority, dueDate, isFinished, null, null);
+        var newNode = new Note(undefined, title, description, priority, dueDate, isFinished, null, null);
         noteService.add(newNode, function(err, data){
             if(err){
                 res.send(err);
@@ -25,10 +25,10 @@ module.exports.saveNote = function(req, res){
             }
         });
     } catch(err) {
+        console.log(err);
         res.send(err);
         return;
     }
-    res.send(req.body);
 };
 
 module.exports.showEditNoteView = function(req, res){

@@ -2,13 +2,13 @@
 
 class Note{
 
-    constructor(id, title, description, priority, dueDate, isFinished, createdDate){
-        this.id = id;
+    constructor(_id, title, description, priority, dueDate, isFinished, createdDate){
+        this._id = _id;
         this.setTitle(title);
         this.description = description;
         this.setPriority(priority);
-        this.dueDate(dueDate);
-        this.isFinished(isFinished);
+        this.setDueDate(dueDate);
+        this.setIsFinished(isFinished);
         this.createdDate = createdDate;
         this.modifiedDate = new Date();
     }
@@ -31,7 +31,7 @@ class Note{
 
     setDueDate(dueDate){
         /* check due date format*/
-        var datetime = data.parse(dueDate);
+        var datetime = Date.parse(dueDate);
         if(isNaN(datetime)){
             throw "Invalid due Date."
         }
