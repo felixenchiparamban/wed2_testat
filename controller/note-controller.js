@@ -2,7 +2,19 @@ var Note = require("../model/note");
 var noteService = require("../services/note-service");
 
 module.exports.showNotes = function (req, res){
- res.send('test');
+   noteService.getAll(function(err, notes){
+       if(err){
+           res.send(err);
+           return;
+       }
+      res.render("index", { notes : notes }, function(err, html){
+          if(err){
+              res.send(err);
+              return;
+          }
+          res.send(html);
+      });
+   });
 };
 
 module.exports.showCreateNoteView = function(req, res){
@@ -34,4 +46,3 @@ module.exports.saveNote = function(req, res){
 module.exports.showEditNoteView = function(req, res){
 
 };
-

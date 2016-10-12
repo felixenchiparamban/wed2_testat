@@ -1,2 +1,15 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<h1>Notes</h1>
+{{#each notes}}
+    <p>Your Note list</p>
+    <p>Title: {{title}}</p>
+    <p>description: {{description}}</p>
+    <p>priority: {{priority}}</p>
+    <p>dueDate: {{dateFormat dueDate 'MMM Do YY'}}</p>
+    {{#if isFinished}}
+        <input type="checkbox" name="isFinished" value="isFinished" checked="checked"> isFinished
+        <br>
+    {{else}}
+        <input type="checkbox" name="isFinished" value="isFinished"> isFinished
+        <br>
+    {{/if}}
+{{/each}}

@@ -10,11 +10,15 @@ function editNote(noteObj,callback){
 }
 
 function getNote(noteID, callback){
-
+    db.findOne({_id: id}, function(err, notes){
+       callback(err, notes);
+    });
 }
 
 function getAllNotes(callback){
-
+    db.find({}, function (err, notes) {
+       callback(err, notes);
+    });
 }
 
-module.exports = { add : addNote, edit : editNote, get : getNote, get : getAllNotes };
+module.exports = { add : addNote, edit : editNote, get : getNote, getAll : getAllNotes };
