@@ -1,1 +1,2 @@
-{"_id":"Wz7TAC18lfVJooMD","title":"test","description":"test","priority":"1","dueDate":1476914400000,"isFinished":false,"createdDate":null,"modifiedDate":{"$$date":1475941868330}}
+{"_id":"Wz7TAC18lfVJooMD","title":"test","description":"test","priority":"1","dueDate":1476914400000,"isFinished":false,"createdDate":1475941868330,"modifiedDate":{"$$date":1475941868330}}
+{"_id":"vxTlEmsNzNvrzdOM","title":"Justice League","description":"DC Movies","priority":"1","dueDate":1476223200000,"isFinished":false,"createdDate":1476280734222,"modifiedDate":{"$$date":1476280734222}}

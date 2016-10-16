@@ -12,6 +12,6 @@ router.get("/create", noteController.showCreateNoteView);
 router.post("/save", noteController.saveNote);
 
 /* GET edit note*/
-router.get("/edit", noteController.showEditNoteView);
+router.get("/edit/:id", noteController.showEditNoteView);
 
 module.exports = router;
