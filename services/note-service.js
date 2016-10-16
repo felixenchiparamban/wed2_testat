@@ -10,15 +10,15 @@ function editNote(noteObj,callback){
 }
 
 function getNote(noteID, callback){
-    db.findOne({_id: id}, function(err, notes){
-       callback(err, notes);
-    });
+    db.findOne({_id: id}, callback);
 }
 
 function getAllNotes(callback){
-    db.find({}, function (err, notes) {
-       callback(err, notes);
-    });
+    db.find({}, callback);
 }
 
-module.exports = { add : addNote, edit : editNote, get : getNote, getAll : getAllNotes };
+function findNotesBy(conditions, callback){
+    db.find(conditions, callback);
+}
+
+module.exports = { add : addNote, edit : editNote, get : getNote, getAll : getAllNotes , findNotesBy : findNotesBy };

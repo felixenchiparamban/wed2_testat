@@ -1,4 +1,4 @@
-{"_id":"BhZghbAcmezAOHAX","title":"home work","description":"todo","priority":"2","dueDate":1451689200000,"isFinished":false,"createdDate":null,"modifiedDate":{"$$date":1476279537161}}
-{"_id":"JW46roaUWlOH9XV4","title":"DB1","description":"testat","priority":"4","dueDate":1386630000000,"isFinished":false,"createdDate":null,"modifiedDate":{"$$date":1476279566251}}
-{"_id":"WbGjaYcYKEMESRYd","title":"DB2","description":"testat4","priority":"4","dueDate":1480028400000,"isFinished":false,"createdDate":null,"modifiedDate":{"$$date":1476279602264}}
-{"_id":"Wz7TAC18lfVJooMD","title":"test","description":"test","priority":"1","dueDate":1476914400000,"isFinished":false,"createdDate":null,"modifiedDate":{"$$date":1475941868330}}
+{"_id":"BhZghbAcmezAOHAX","title":"home work","description":"todo","priority":"2","dueDate":1451689200000,"isFinished":true,"createdDate":1451689200000,"modifiedDate":{"$$date":1476279537161}}
+{"_id":"JW46roaUWlOH9XV4","title":"DB1","description":"testat","priority":"4","dueDate":1386630000000,"isFinished":true,"createdDate":1386630000000,"modifiedDate":{"$$date":1476279566251}}
+{"_id":"WbGjaYcYKEMESRYd","title":"DB2","description":"testat4","priority":"4","dueDate":1480028400000,"isFinished":false,"createdDate":1480028400000,"modifiedDate":{"$$date":1476279602264}}
+{"_id":"Wz7TAC18lfVJooMD","title":"test","description":"test","priority":"1","dueDate":1476914400000,"isFinished":false,"createdDate":1476914400000,"modifiedDate":{"$$date":1475941868330}}

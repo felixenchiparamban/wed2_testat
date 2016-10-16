@@ -1,20 +1,32 @@
 var Note = require("../model/note");
 var noteService = require("../services/note-service");
+var noteUtils = require("../core/util/note-util");
 
 module.exports.showNotes = function (req, res){
-   noteService.getAll(function(err, notes){
-       if(err){
-           res.send(err);
-           return;
-       }
-      res.render("index", { notes : notes }, function(err, html){
-          if(err){
-              res.send(err);
-              return;
-          }
-          res.send(html);
-      });
-   });
+    var sortKey = req.query.sort || "dueDate";
+    var orderValue = req.query.order || "asc";
+    var showFinished = req.query.showFinished == "false" ? false : true;
+
+    if(showFinished){
+        var queryObj = {};
+    } else {
+        queryObj = {isFinished : showFinished};
+    }
+
+    noteService.findNotesBy(queryObj ,function(err, notes){
+            if(err){
+                res.send(err);
+                return;
+            }
+            var sortedNoteList = noteUtils.sortNotes(notes, sortKey, orderValue);
+            res.render("index", { notes : sortedNoteList, orderValue : orderValue, showFinished : showFinished}, function(err, html){
+                if(err){
+                    res.send(err);
+                    return;
+                }
+                res.send(html);
+            });
+    });
 };
 
 module.exports.showCreateNoteView = function(req, res){
