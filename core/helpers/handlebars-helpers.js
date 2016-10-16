@@ -8,8 +8,15 @@ hbs.registerHelper('dateFormat', function(date, format){
 hbs.registerHelper('checkedState', function(order, currentValue){
     if (order == currentValue) {
         return 'checked';
-    }
-    else {
+    } else {
         return '';
+    }
+});
+
+hbs.registerHelper('switchStyle', function(currentStyle){
+    if(currentStyle == "dark"){
+        return "light";
+    } else {
+        return "dark";
     }
 });

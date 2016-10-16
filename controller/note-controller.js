@@ -7,6 +7,7 @@ module.exports.showNotes = function (req, res){
     var sortKey = req.query.sort || "dueDate";
     var orderValue = req.query.order || "asc";
     var showFinished = req.query.showFinished == "false" ? false : true;
+    var style = req.query.style;
 
     if(showFinished){
         var queryObj = {};
@@ -20,8 +21,8 @@ module.exports.showNotes = function (req, res){
                 return;
             }
             var sortedNoteList = noteUtils.sortNotes(notes, sortKey, orderValue);
-            res.render("index", { notes : sortedNoteList, orderValue : orderValue, showFinished : showFinished}, function(err, html){
-                if(err){
+            res.render("index", { notes : sortedNoteList, orderValue : orderValue, showFinished : showFinished, style: style}, function(err, html){
+                        if(err){
                     res.send(err);
                     return;
                 }

@@ -1,33 +1,39 @@
-<h1>Notes</h1>
-<section>
-    <form method="get" action="/">
-
-        <button type="submit" name="sort" value="dueDate"> By Finish Date </button>
-        <button type="submit" name="sort" value="createdDate"> By created Date </button>
-        <button type="submit" name="sort" value="priority"> By Importance </button>
-        <input type="radio" name="order" value="asc" {{checkedState orderValue "asc"}}> ascending
-        <input type="radio" name="order" value="desc" {{checkedState orderValue "desc"}}> descending
-        {{#if showFinished}}
-            <button type="submit" name="showFinished" value="false"> Fertige Verbergen </button>
-        {{else}}
-            <button type="submit" name="showFinished" value="true"> Alle anzeigen </button>
-        {{/if}}
-
-    </form>
-</section>
-
-
-{{#each notes}}
-    <p>Your Note list</p>
-    <p>Title: {{title}}</p>
-    <p>description: {{description}}</p>
-    <p>priority: {{priority}}</p>
-    <p>dueDate: {{dateFormat dueDate 'MMM Do YY'}}</p>
-    {{#if isFinished}}
-        <input type="checkbox" name="isFinished" value="isFinished" checked="checked"> isFinished
-        <br>
-    {{else}}
-        <input type="checkbox" name="isFinished" value="isFinished"> isFinished
-        <br>
-    {{/if}}
-{{/each}}
+<main>
+    <nav>
+        <h1>Notes</h1>
+        <form method="get" action="/">
+            <div>
+                <button type="submit" name="sort" value="dueDate"> By Finish Date </button>
+                <button type="submit" name="sort" value="createdDate"> By created Date </button>
+                <button type="submit" name="sort" value="priority"> By Importance </button>
+                <input type="radio" id="asc" name="order" value="asc" {{checkedState orderValue "asc"}}>
+                <label for="asc"> ascending </label>
+                <input type="radio" id="desc" name="order" value="desc" {{checkedState orderValue "desc"}}>
+                <label for="desc"> descending </label>
+                {{#if showFinished}}
+                    <button type="submit" name="showFinished" value="false"> Fertige Verbergen </button>
+                {{else}}
+                    <button type="submit" name="showFinished" value="true"> Alle anzeigen </button>
+                {{/if}}
+                <button type="submit" name="style" value="{{switchStyle style}}"> Style switcher </button>
+            </div>
+        </form>
+    </nav>
+    <section id="container">
+        <h2> Your Note list </h2>
+        {{#each notes}}
+            <form method="get" action="/edit/{{_id}}" class="notes">
+                <h3>Title: {{title}}</h3>
+                <p>description: {{description}}</p>
+                <p>priority: {{priority}}</p>
+                <time datetime="{{dateFormat dueDate 'MMM Do YY'}}">dueDate: {{dateFormat dueDate 'MMM Do YY'}}</time>
+                {{#if isFinished}}
+                    <input type="checkbox" name="isFinished" value="isFinished" checked="checked"> isFinished
+                {{else}}
+                    <input type="checkbox" name="isFinished" value="isFinished"> isFinished
+                {{/if}}
+                <button type="submit" name="editNote" value={{_id}}> Eidt Note </button>
+            </form>
+        {{/each}}
+    </section>
+</main>
