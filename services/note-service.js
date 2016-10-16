@@ -5,7 +5,7 @@ function addNote(noteObj, callback){
     db.insert(noteObj, callback);
 }
 
-function editNote(noteObj,callback){
+function updateNote(noteObj, callback){
 
 }
 
@@ -21,4 +21,5 @@ function findNotesBy(conditions, callback){
     db.find(conditions, callback);
 }
 
-module.exports = { add : addNote, edit : editNote, get : getNote, getAll : getAllNotes , findNotesBy : findNotesBy };
+module.exports = { add : addNote, update : updateNote, get : getNote, getAll : getAllNotes , findNotesBy : findNotesBy };
+
