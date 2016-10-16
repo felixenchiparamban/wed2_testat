@@ -1,46 +1,50 @@
 'use strict';
+var moment = require('moment');
 
-class Note{
+class Note {
 
-    constructor(_id, title, description, priority, dueDate, isFinished, createdDate){
+    constructor(_id, title, description, priority, dueDate, isFinished) {
         this._id = _id;
         this.setTitle(title);
         this.description = description;
         this.setPriority(priority);
         this.setDueDate(dueDate);
         this.setIsFinished(isFinished);
-        this.createdDate = createdDate;
-        this.modifiedDate = new Date();
+
+        // additional meta information
+        this.createdDate, this.modifiedDate;
     }
 
-    setTitle(title){
+    setTitle(title) {
         /* check if title is undefined, null or empty string.*/
-        if(!title) {
+        if (!title) {
             throw "Title is required.";
         }
         this.title = title;
     }
 
-    setPriority(priority){
+    setPriority(priority) {
         /* check if prority is string or the range is between one and five. */
-        if(isNaN(priority) || priority < 1 || priority > 5 ){
+        if (isNaN(priority) || priority < 1 || priority > 5) {
             throw "Priority is not in range(1 - 5)."
         }
         this.priority = priority;
     }
 
-    setDueDate(dueDate){
+    setDueDate(dueDate) {
+        var date = moment(dueDate, "DD.MM.YYYY");
         /* check due date format*/
-        var datetime = Date.parse(dueDate);
-        if(isNaN(datetime)){
+        var datetime = date.toDate();
+        console.log(datetime);
+        if (isNaN(datetime)) {
             throw "Invalid due Date."
         }
         this.dueDate = datetime;
     }
 
-    setIsFinished(isFinished){
+    setIsFinished(isFinished) {
         /* check boolean typeof */
-        if(!isFinished){
+        if (!isFinished) {
             this.isFinished = false;
         } else {
             this.isFinished = false;

@@ -20,6 +20,7 @@ module.exports.showNotes = function (req, res){
                 res.send(err);
                 return;
             }
+            console.log(notes.length);
             var sortedNoteList = noteUtils.sortNotes(notes, sortKey, orderValue);
             res.render("index", { notes : sortedNoteList, orderValue : orderValue, showFinished : showFinished, style: style}, function(err, html){
                         if(err){
@@ -42,14 +43,17 @@ module.exports.saveNote = function (req, res) {
     var priority = req.body.priority;
     var dueDate = req.body.dueDate;
     var isFinished = req.body.isFinished;
+
     try {
         // create a model
-        var newNode = new Note(_id, title, description, priority, dueDate, isFinished, null, null);
-        noteService.add(newNode, function (err, data) {
+        var note = new Note(_id, title, description, priority, dueDate, isFinished);
+        // save the note in database
+        noteService.insertOrUpdate(note, function (err, data) {
             if (err) {
                 res.send(err);
             } else {
-                res.send(data);
+                console.log("Insert/Update successful: ", data);
+                res.redirect("/");
             }
         });
     } catch (err) {

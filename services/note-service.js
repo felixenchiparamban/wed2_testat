@@ -1,25 +1,53 @@
 var Datastore = require('nedb');
-var db = new Datastore({ filename: './data/notes.db', autoload: true });
+var db = new Datastore({filename: "./data/notes.db", autoload: true});
 
-function addNote(noteObj, callback){
+function insertNote(noteObj, callback) {
+    noteObj.createdDate = new Date();
+    console.log("insert new note: " + noteObj);
     db.insert(noteObj, callback);
 }
 
-function updateNote(noteObj, callback){
-
+function updateNote(noteObj, callback) {
+    console.log("updating note: " + noteObj);
+    db.update(
+        {_id: noteObj._id},
+        {
+            $set: {
+                title: noteObj.title,
+                description: noteObj.description,
+                priority: noteObj.priority,
+                dueDate: noteObj.dueDate,
+                isFinished: noteObj.isFinished,
+                modifiedDate: new Date()
+            }
+        }, {}, callback);
 }
 
-function getNote(noteID, callback){
+function insertOrUpdate(noteObj, callback) {
+    if (typeof noteObj._id === "undefined") {
+        insertNote(noteObj, callback);
+    } else {
+        updateNote(noteObj, callback);
+    }
+}
+
+function getNote(noteID, callback) {
     db.findOne({_id: id}, callback);
 }
 
-function getAllNotes(callback){
+function getAllNotes(callback) {
     db.find({}, callback);
 }
 
-function findNotesBy(conditions, callback){
+function findNotesBy(conditions, callback) {
     db.find(conditions, callback);
 }
 
-module.exports = { add : addNote, update : updateNote, get : getNote, getAll : getAllNotes , findNotesBy : findNotesBy };
-
+module.exports = {
+    add: insertNote,
+    update: updateNote,
+    insertOrUpdate: insertOrUpdate,
+    get: getNote,
+    getAll: getAllNotes,
+    findNotesBy: findNotesBy
+};
