@@ -1,7 +1,6 @@
 body {
-  padding: 50px;
+  min-width: 320px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-
 }
 
 a {
@@ -30,6 +29,7 @@ nav{
 .dark nav{
   background-color: #3a3a44;
 }
+
 form > div > *{
 
   padding: 5px;

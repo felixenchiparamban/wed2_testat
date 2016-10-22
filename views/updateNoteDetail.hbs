@@ -1,33 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<header class="page-header">
+    <h1>{{title}}</h1>
+</header>
 
- <form method="post" action="/save">
+<main>
+    <form class="form-horizontal" method="post" action="/save">
 
-     <label for="title">Title</label>
-     <input id="title" name="title"/>
-     <br/>
-     <label for="description">Desc</label>
-     <input id="description" name="description"/>
-     <br/>
+        <div class="form-group">
+            <label for="title" class="control-label">Title</label>
+            <input id="title" name="title" type="text" class="form-control"/>
+        </div>
 
-     <label for="priority">priority</label>
-     <input id="priority" name="priority"/>
-     <br/>
+        <div class="form-group">
+            <label for="description" class="control-label">Description</label>
+            <textarea class="form-control" id="description" name="description"></textarea>
+        </div>
 
-     <label for="dueDate">duedate</label>
-     <input id="dueDate" name="dueDate"/>
-     <br/>
+        <div class="form-group">
+            <label for="priority" class="control-label">priority</label>
+            <input id="priority" name="priority" type="number" class="form-control" min="1" max="5"/>
+        </div>
 
-     <label for="isFinished">isFinished</label>
-     <input id="isFinished" name="isFinished"/>
+        <div class="form-group">
+            <label for="dueDate" class="control-label">Due Date</label>
+            <input id="dueDate" name="dueDate" type="date" class="form-control"/>
+        </div>
 
-     <button>Submit</button>
- </form>
+        <div class="checkbox">
+            <label>
+                <input id="isFinished" name="isFinished" type="checkbox"> done
+            </label>
+        </div>
 
-</body>
-</html>
+        <p>
+            <button type="reset" class="btn btn-default">Reset</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </p>
+    </form>
+
+</main>
