@@ -4,7 +4,7 @@ var moment = require('moment');
 class Note {
 
     constructor(_id, title, description, priority, dueDate, isFinished) {
-        this._id = _id;
+        this.setId(_id);
         this.setTitle(title);
         this.description = description;
         this.setPriority(priority);
@@ -13,6 +13,14 @@ class Note {
 
         // additional meta information
         this.createdDate, this.modifiedDate;
+    }
+
+    setId(_id){
+        if(!_id){
+            this._id = undefined;
+        }else{
+            this._id = _id;
+        }
     }
 
     setTitle(title) {
@@ -46,7 +54,7 @@ class Note {
         if (!isFinished) {
             this.isFinished = false;
         } else {
-            this.isFinished = false;
+            this.isFinished = true;
         }
     }
 }

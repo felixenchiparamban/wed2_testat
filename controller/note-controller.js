@@ -68,7 +68,29 @@ module.exports.saveNote = function (req, res) {
     }
 };
 
-module.exports.showEditNoteView = function (req, res) {
+module.exports.showEditNoteView = function (req, res, next) {
     var _id = req.params.id;
-    res.send(_id);
+    var style = req.query.style;
+
+    noteService.get(_id, function(err, doc){
+        if(err){
+            res.statusCode = 500;
+            res.send(err);
+        }else{
+
+            // check if docs found
+            if(!doc){
+                next(new Error("Note not found. ID:"+ _id));
+            }else{
+
+                let viewData = {
+                    title : "Edit note",
+                    note : doc,
+                    style: style
+                };
+
+                res.render("updateNoteDetail.hbs", viewData);
+            }
+        }
+    });
 };
