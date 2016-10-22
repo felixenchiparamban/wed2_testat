@@ -1,8 +1,10 @@
+<header>
+    <h1>Notes</h1>
+</header>
 <main>
-    <nav>
-        <h1>Notes</h1>
+    <section id="setting">
         <form method="get" action="/">
-            <div>
+            <div id="settingOptions">
                 <button type="submit" name="sort" value="dueDate"> By Finish Date </button>
                 <button type="submit" name="sort" value="createdDate"> By created Date </button>
                 <button type="submit" name="sort" value="priority"> By Importance </button>
@@ -18,7 +20,7 @@
                 <button type="submit" name="style" value="{{switchStyle style}}"> Style switcher </button>
             </div>
         </form>
-    </nav>
+    </section>
     <section id="container">
         <h2> Your Note list </h2>
         {{#each notes}}
