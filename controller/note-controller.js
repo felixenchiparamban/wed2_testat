@@ -55,14 +55,14 @@ module.exports.saveNote = function (req, res) {
         // save the note in database
         noteService.insertOrUpdate(note, function (err, data) {
             if (err) {
-                res.send(err);
+                res.send("note service insert/update error:",err);
             } else {
                 console.log("Insert/Update successful: ", data);
                 res.redirect("/");
             }
         });
     } catch (err) {
-        console.log(err);
+        console.log("save error", err);
         res.send(err);
         return;
     }

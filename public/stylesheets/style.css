@@ -1,54 +1,60 @@
 body {
-  min-width: 320px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    min-width: 320px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+.title {
+    padding-left: 1rem;
+}
+
+main {
+    padding: 0.5rem;
+}
 
 /* light theme */
-
 
 /* end of light theme */
 
 /* dark theme */
 
 /* enf of dark them */
-.light h1{
-  background-color: #FFFFA5;
+.light h1 {
+    background-color: #FFFFA5;
 }
 
-.dark h1{
-  background-color: #3a3a44;
+.dark h1 {
+    background-color: #3a3a44;
 }
 
-.dark h1{
-  color: white;
+.dark h1 {
+    color: white;
 }
 
 #settingOptions {
-  display: flex;
+    display: flex;
 }
 
 /* show notes */
 #settingOptions {
-  padding: 5px;
-  margin-top: 30px;
-  margin-bottom: 10px;
+    padding: 5px;
+    margin-top: 30px;
+    margin-bottom: 10px;
 }
 
-.notes{
-  align-content: center;
-  float: left;
-  border: solid;
-  margin: 2px;
-  border-radius: 10px;
+.notes {
+    align-content: center;
+    float: left;
+    border: solid;
+    margin: 2px;
+    border-radius: 10px;
 }
 
 .light .notes {
-  border-color: orangered;
+    border-color: orangered;
 }
 
-.dark .notes{
-  border-color: black;
+.dark .notes {
+    border-color: black;
 }
 
 .notes {
@@ -58,3 +64,40 @@ body {
 /* end of show notes*/
 
 /* create/edit note */
+.input-row {
+    margin: 1rem 0;
+}
+
+.form-button-holder {
+    text-align: center;
+}
+
+/* End of create/edit notes */
+
+/***************************************
+* screen size from 720px
+*/
+@media (min-width: 720px) {
+
+    /* create/edit note */
+    .input-row {
+        overflow: hidden;
+    }
+
+    .input-row .control-label {
+        float: left;
+        width: 20%;
+        text-align: right;
+        padding-top: 0.7rem;
+        padding-right: 1.5rem;
+    }
+
+    .input-row .form-control {
+        display: inline-block;
+        width: 80%;
+    }
+
+    .no-label {
+        margin-left: 20%;
+    }
+}
