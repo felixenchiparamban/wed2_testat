@@ -84,6 +84,10 @@ button {
   height: 95%;
 }
 
+#ASC_DESC {
+  display: flex;
+}
+
 /* end of buttons*/
 
 /* show notes */
@@ -120,13 +124,35 @@ button {
 /* start of MEDIA QUERIES */
 
 
+/* break points*/
+
+@media screen and (max-width: 818px){
+  #settingOptions {
+    display: inline-block;
+  }
+}
+
 /* mobiles */
 
 @media screen and (max-width: 415px){
   #orderSettings {
     flex-direction: column;
-    flex: 1 0;
   }
+  #orderSettings {
+    margin: 10%;
+    padding-left: 25px;
+    padding-right: 21px;
+    margin-left: 56px;
+  }
+  #ASC_DESC {
+    align-self: center;
+  }
+}
+
+/* tab */
+
+@media screen and(max-width: 650px){
+
 }
 
 /* end of MEDIA QUERIES*/
