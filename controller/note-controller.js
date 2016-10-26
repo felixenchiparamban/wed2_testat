@@ -55,20 +55,42 @@ module.exports.saveNote = function (req, res) {
         // save the note in database
         noteService.insertOrUpdate(note, function (err, data) {
             if (err) {
-                res.send(err);
+                res.send("note service insert/update error:",err);
             } else {
                 console.log("Insert/Update successful: ", data);
                 res.redirect("/");
             }
         });
     } catch (err) {
-        console.log(err);
+        console.log("save error", err);
         res.send(err);
         return;
     }
 };
 
-module.exports.showEditNoteView = function (req, res) {
+module.exports.showEditNoteView = function (req, res, next) {
     var _id = req.params.id;
-    res.send(_id);
+    var style = req.query.style;
+
+    noteService.get(_id, function(err, doc){
+        if(err){
+            res.statusCode = 500;
+            res.send(err);
+        }else{
+
+            // check if docs found
+            if(!doc){
+                next(new Error("Note not found. ID:"+ _id));
+            }else{
+
+                let viewData = {
+                    title : "Edit note",
+                    note : doc,
+                    style: style
+                };
+
+                res.render("updateNoteDetail.hbs", viewData);
+            }
+        }
+    });
 };

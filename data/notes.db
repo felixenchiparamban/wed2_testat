@@ -1,5 +1,3 @@
-{"_id":"0aqyEAH4sxaDbLhl","title":"Hello Worlds 2","description":"old movie","priority":"1","dueDate":1482793200000,"isFinished":false,"createdDate":null,"modifiedDate":{"$$date":1476626384117}}
-{"_id":"SOvbAW0HyCreXlkJ","title":"Home work","description":"InfSi 2","priority":"5","dueDate":1476741600000,"isFinished":false,"createdDate":null,"modifiedDate":{"$$date":1476626422709}}
-{"_id":"aU8B9C8hI2W8MCwX","title":"Hello World","description":"new movie","priority":"2","dueDate":1477346400000,"isFinished":false,"createdDate":null,"modifiedDate":{"$$date":1476626338338}}
-{"_id":"gLpwEN1n9pMosd8h","title":"sdfsf","description":"sdfsf","priority":"3","dueDate":1445378400000,"isFinished":false,"createdDate":null,"modifiedDate":{"$$date":1476628110589}}
-{"_id":"zFhW94YUQJyUmU4O","title":"ExEv","description":"how work","priority":"1","dueDate":1476482400000,"isFinished":false,"createdDate":null,"modifiedDate":{"$$date":1476626469708}}
+{"_id":"0IL1neSxlWZfWFkW","title":"WED Testat 2","description":"Create and Edit notes (backend logic and frontend design)","priority":"5","dueDate":{"$$date":1478991600000},"isFinished":false,"createdDate":{"$$date":1477156565319},"modifiedDate":{"$$date":1477161033096}}
+{"_id":"BqMyWmiXD9Q5eclm","title":"Hello World","description":"","priority":"3","dueDate":{"$$date":1511478000000},"isFinished":false,"createdDate":{"$$date":1477156265323}}
+{"_id":"b2Wje4NeEQiAg53k","title":"ID is now set","description":"hello world","priority":"2","dueDate":{"$$date":1477173600000},"isFinished":true,"createdDate":{"$$date":1477161549142},"modifiedDate":{"$$date":1477161562635}}

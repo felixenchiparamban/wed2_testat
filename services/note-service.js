@@ -32,7 +32,7 @@ function insertOrUpdate(noteObj, callback) {
 }
 
 function getNote(noteID, callback) {
-    db.findOne({_id: id}, callback);
+    db.findOne({_id: noteID}, callback);
 }
 
 function getAllNotes(callback) {

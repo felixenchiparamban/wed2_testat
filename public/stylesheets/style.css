@@ -1,6 +1,6 @@
 body {
-  min-width: 320px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    min-width: 320px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 #container > h2 {
@@ -13,7 +13,13 @@ body {
   padding-right: 1%;
 }
 
-/* light theme */
+.title {
+    padding-left: 1rem;
+}
+
+main {
+    padding: 0.5rem;
+}
 
 .light h1{
   background-color: #FFFFA5;
@@ -88,6 +94,22 @@ button {
   display: flex;
 }
 
+.light h1 {
+    background-color: #FFFFA5;
+}
+
+.dark h1 {
+    background-color: #3a3a44;
+}
+
+.dark h1 {
+    color: white;
+}
+
+#settingOptions {
+    display: flex;
+}
+
 /* end of buttons*/
 
 /* show notes */
@@ -132,6 +154,22 @@ button {
   }
 }
 
+.notes {
+    align-content: center;
+    float: left;
+    border: solid;
+    margin: 2px;
+    border-radius: 10px;
+}
+
+.light .notes {
+    border-color: orangered;
+}
+
+.dark .notes {
+    border-color: black;
+}
+
 /* mobiles */
 
 @media screen and (max-width: 415px){
@@ -158,3 +196,40 @@ button {
 /* end of MEDIA QUERIES*/
 
 /* create/edit note */
+.input-row {
+    margin: 1rem 0;
+}
+
+.form-button-holder {
+    text-align: center;
+}
+
+/* End of create/edit notes */
+
+/***************************************
+* screen size from 720px
+*/
+@media (min-width: 720px) {
+
+    /* create/edit note */
+    .input-row {
+        overflow: hidden;
+    }
+
+    .input-row .control-label {
+        float: left;
+        width: 20%;
+        text-align: right;
+        padding-top: 0.7rem;
+        padding-right: 1.5rem;
+    }
+
+    .input-row .form-control {
+        display: inline-block;
+        width: 80%;
+    }
+
+    .no-label {
+        margin-left: 20%;
+    }
+}

@@ -4,7 +4,7 @@ var moment = require('moment');
 class Note {
 
     constructor(_id, title, description, priority, dueDate, isFinished) {
-        this._id = _id;
+        this.setId(_id);
         this.setTitle(title);
         this.description = description;
         this.setPriority(priority);
@@ -13,6 +13,14 @@ class Note {
 
         // additional meta information
         this.createdDate, this.modifiedDate;
+    }
+
+    setId(_id){
+        if(!_id){
+            this._id = undefined;
+        }else{
+            this._id = _id;
+        }
     }
 
     setTitle(title) {
@@ -26,19 +34,18 @@ class Note {
     setPriority(priority) {
         /* check if prority is string or the range is between one and five. */
         if (isNaN(priority) || priority < 1 || priority > 5) {
-            throw "Priority is not in range(1 - 5)."
+            throw "Priority ${priority} is not in range(1 - 5)."
         }
         this.priority = priority;
     }
 
     setDueDate(dueDate) {
-        var date = moment(dueDate, "DD.MM.YYYY");
-        /* check due date format*/
-        var datetime = date.toDate();
-        console.log(datetime);
-        if (isNaN(datetime)) {
-            throw "Invalid due Date."
+        var date = moment(dueDate); //format("YYYY-MM-DD");
+        if (!date.isValid()) {
+            throw `Invalid due Date ${dueDate}.`
         }
+        /* check due date format*/
+        var datetime = new Date(date.year(), date.month(), date.date());
         this.dueDate = datetime;
     }
 
@@ -47,7 +54,7 @@ class Note {
         if (!isFinished) {
             this.isFinished = false;
         } else {
-            this.isFinished = false;
+            this.isFinished = true;
         }
     }
 }

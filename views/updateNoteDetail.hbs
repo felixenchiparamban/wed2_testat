@@ -1,40 +1,44 @@
-<header class="page-header">
+<header class="page-header title">
     <h1>{{title}}</h1>
 </header>
 
 <main>
-    <form class="form-horizontal" method="post" action="/save">
 
-        <div class="form-group">
-            <label for="title" class="control-label">Title</label>
-            <input id="title" name="title" type="text" class="form-control"/>
-        </div>
+    <div class="container">
+        <form id="form-note-update" method="post" action="/save">
 
-        <div class="form-group">
-            <label for="description" class="control-label">Description</label>
-            <textarea class="form-control" id="description" name="description"></textarea>
-        </div>
+            <input type="hidden" name="_id" value="{{note._id}}"/>
 
-        <div class="form-group">
-            <label for="priority" class="control-label">priority</label>
-            <input id="priority" name="priority" type="number" class="form-control" min="1" max="5"/>
-        </div>
+            <div class="input-row">
+                <label for="title" class="control-label">Title</label>
+                <input id="title" name="title" type="text" class="form-control" required value="{{note.title}}"/>
+            </div>
 
-        <div class="form-group">
-            <label for="dueDate" class="control-label">Due Date</label>
-            <input id="dueDate" name="dueDate" type="date" class="form-control"/>
-        </div>
+            <div class="input-row">
+                <label for="description" class="control-label">Description</label>
+                <textarea class="form-control" id="description" name="description">{{note.description}}</textarea>
+            </div>
 
-        <div class="checkbox">
-            <label>
-                <input id="isFinished" name="isFinished" type="checkbox"> done
-            </label>
-        </div>
+            <div class="input-row">
+                <label for="priority" class="control-label">priority</label>
+                <input id="priority" name="priority" type="number" class="form-control" min="1" max="5" required value="{{note.priority}}"/>
+            </div>
 
-        <p>
-            <button type="reset" class="btn btn-default">Reset</button>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </p>
-    </form>
+            <div class="input-row">
+                <label for="dueDate" class="control-label">Due Date</label>
+                <input id="dueDate" name="dueDate" type="date" class="form-control" required placeholder="YYYY-MM-DD" pattern="\d{4}-\d{2}-\d{2}" value="{{dateFormat note.dueDate "YYYY-MM-DD"}}"/>
+            </div>
 
+            <div class="input-row no-label">
+                <label>
+                    <input id="isFinished" name="isFinished" type="checkbox" {{checkboxState note.isFinished}}> done
+                </label>
+            </div>
+
+            <div class="form-button-holder">
+                <a href="/" class="btn btn-default">Cancel</a>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
 </main>

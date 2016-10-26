@@ -13,6 +13,10 @@ hbs.registerHelper('checkedState', function(order, currentValue){
     }
 });
 
+hbs.registerHelper('checkboxState', function(boolean){
+   return boolean ? "checked" : "";
+});
+
 hbs.registerHelper('switchStyle', function(currentStyle){
     if(currentStyle == "dark"){
         return "light";
