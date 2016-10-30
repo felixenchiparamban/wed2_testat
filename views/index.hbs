@@ -1,45 +1,48 @@
-<header>
+<header id="page-header">
     <h1>Notes</h1>
 </header>
+
 <main>
     <section id="setting">
-        <form method="get" action="/">
-            <div id="settingOptions">
-                <div id="orderSettings">
-                    <h4>Sorted by: </h4>
-                    <button type="submit" name="sort" value="dueDate"> By Finish Date </button>
-                    <button type="submit" name="sort" value="createdDate"> By created Date </button>
-                    <button type="submit" name="sort" value="priority"> By Importance </button>
-                    <div id="ASC_DESC">
-                        <input type="radio" id="asc" name="order" value="asc" {{checkedState orderValue "asc"}}>
-                        <label for="asc"> ascending </label>
-                        <input type="radio" id="desc" name="order" value="desc" {{checkedState orderValue "desc"}}>
-                        <label for="desc"> descending </label>
-                    </div>
-                </div>
-                {{#if showFinished}}
-                    <button type="submit" class="showingNodes" name="showFinished" value="false"> hide finished notes </button>
-                {{else}}
-                    <button type="submit" class="showingNodes" name="showFinished" value="true"> show all notes </button>
-                {{/if}}
-                <button type="submit" id="styleSwitcher" name="style" value="{{switchStyle style}}"> Style switcher </button>
+        <form method="get" action="/" id="settingOptions">
+            <div id="orderSettings">
+
+                <h4>Sorted by: </h4>
+
+                <button type="submit" name="sort" value="dueDate" class="glyphicon {{sortOrderStyle sort orderValue "dueDate"}} btn btn-default" > By Finish Date </button>
+
+                <button type="submit" name="sort" value="createdDate" class="glyphicon {{sortOrderStyle sort orderValue "createdDate"}} btn btn-default"> By created Date </button>
+
+                <button type="submit" name="sort" value="priority" class="glyphicon {{sortOrderStyle sort orderValue "priority"}} btn btn-default"> By Importance </button>
             </div>
+            <div id="actionButton">
+                <button type="submit" class="showingNodes btn btn-default" name="showFinished" value="{{showFinished}}">{{typesOfNotesText showFinished}}</button>
+
+                <button type="submit" id="styleSwitcher" name="style" value="{{switchStyle style}}" class="btn btn-default"> Style switcher </button>
+            </div>
+
         </form>
+        <a href="/create" id="createNote" class="btn btn-primary"> Create new Note</a>
+
+
     </section>
+
     <section id="container">
         <h2> Your Note list </h2>
         {{#each notes}}
             <form method="get" action="/edit/{{_id}}" class="notes">
+
                 <h3>Title: {{title}}</h3>
+
                 <p>description: {{description}}</p>
+
                 <p>priority: {{priority}}</p>
+
                 <time id="dueTime" datetime="{{dateFormat dueDate 'MMM Do YY'}}">dueDate: {{dateFormat dueDate 'MMM Do YY'}}</time>
-                {{#if isFinished}}
-                    <input type="checkbox" name="isFinished" value="isFinished" checked="checked"> isFinished
-                {{else}}
-                    <input type="checkbox" name="isFinished" value="isFinished"> isFinished
-                {{/if}}
-                <button type="submit"> Edit Note </button>
+
+                <input type="checkbox" name="isFinished" value="isFinished" {{checkboxState isFinished}} disabled readonly> isFinished
+
+                <button type="submit" class="btn btn-primary editButton"> Edit Note </button>
             </form>
         {{/each}}
     </section>

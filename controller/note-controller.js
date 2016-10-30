@@ -2,17 +2,41 @@ var Note = require("../model/note");
 var noteService = require("../services/note-service");
 var noteUtils = require("../core/util/note-util");
 
-
 module.exports.showNotes = function (req, res){
-    var sortKey = req.query.sort || "dueDate";
-    var orderValue = req.query.order || "asc";
-    var showFinished = req.query.showFinished == "false" ? false : true;
-    var style = req.query.style;
+    var session = req.session;
 
-    if(showFinished){
+    if(!session.visitCount){
+       session.sort = "dueDate";
+        session.showFinished= true;
+        session.orderValue = "asc";
+        session.style = "dark";
+        session.visitCount = 1;
+    } else {
+        session.visitCount++;
+    }
+
+    if(req.query.sort){
+       if(session.sort == req.query.sort){
+           session.orderValue = session.orderValue == "asc" ? "desc" : "asc";
+       } else {
+           session.sort = req.query.sort;
+           session.orderValue = "asc";
+       }
+    }
+    if(req.query.style){
+        session.style = req.query.style;
+    }
+
+    if(req.query.showFinished === "true"){
+        session.showFinished = true;
+    } else if(req.query.showFinished === "false"){
+        session.showFinished = false;
+    }
+
+    if(session.showFinished){
         var queryObj = {};
     } else {
-        queryObj = {isFinished : showFinished};
+        queryObj = {isFinished : session.showFinished};
     }
 
     noteService.findNotesBy(queryObj ,function(err, notes){
@@ -21,8 +45,10 @@ module.exports.showNotes = function (req, res){
                 return;
             }
             console.log(notes.length);
-            var sortedNoteList = noteUtils.sortNotes(notes, sortKey, orderValue);
-            res.render("index", { notes : sortedNoteList, orderValue : orderValue, showFinished : showFinished, style: style}, function(err, html){
+
+            var sortedNoteList = noteUtils.sortNotes(notes, session.sort, session.orderValue);
+
+            res.render("index", { notes : sortedNoteList, sort : session.sort, showFinished : !session.showFinished, orderValue : session.orderValue, style: session.style}, function(err, html){
                         if(err){
                     res.send(err);
                     return;
@@ -33,7 +59,6 @@ module.exports.showNotes = function (req, res){
 };
 
 module.exports.showCreateNoteView = function (req, res) {
-
     let viewData = {
         title : "Create a note"
     };
