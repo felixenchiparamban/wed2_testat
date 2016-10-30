@@ -1,3 +1,4 @@
+
 body {
     min-width: 320px;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -13,13 +14,46 @@ main {
     padding-left: 1rem;
 }
 
+#pageHeader .title{
+    margin: 0;
+}
+
+#pageHeader {
+    padding: 1.5rem 1rem;
+}
+
 #setting {
     text-align: center;
+    width: 75%;
+    margin: 0 auto;
 }
+
+/* start of buttons*/
+
+#setting button {
+    display: block;
+    width: 100%;
+}
+
+.notes {
+    background-color: #FFFFA5;
+    border-radius: 10px;
+}
+
+#actionButtons {
+    margin: 1.5rem 0;
+}
+
+.editButton {
+    float: right;
+}
+
+
+/* end of buttons*/
 
 /* start of light theme */
 
-.light #page-header{
+.light #pageHeader{
   background-color: #FFFFA5;
 }
 
@@ -31,7 +65,7 @@ main {
 
 /* dark theme */
 
-.dark h1{
+.dark #pageHeader{
   color: white;
   background-color: #3a3a44;
 }
@@ -42,96 +76,29 @@ main {
 
 /* enf of dark them */
 
-/* start of buttons*/
-
-#orderSettings{
-  text-align: center;
-}
-
-.editButton {
-    float: right;
-}
-
-#actionButton {
-    text-align: center;
-}
-
-/* end of buttons*/
-
 /* show notes */
 
-#settingOptions {
-  justify-content: center;
-  flex-flow: row wrap;
-  align-content: flex-end;
-  padding: 1%;
-  border-radius: 10px;
-  margin: 2px;
+.noteBottom {
+    overflow: hidden;
 }
 
 .notes{
   align-content: center;
-  float: left;
   border: solid;
+  display: block;
   margin: 1%;
-  width: 98%;
   padding: 1%;
-  border-radius: 10px;
-  background-color: #FFFFA5;
+
 }
 
 #dueTime {
-  display: block;
-  padding-bottom: 0.6%;
+    display: block;
+    padding-bottom: 0.6%;
 }
+
+
 
 /* end of show notes*/
-
-/* start of MEDIA QUERIES */
-
-    #orderSettings {
-        flex-direction: column;
-        margin: 5%;
-    }
-
-    .notes{
-        width: 90%;
-    }
-
-    #setting {
-        display: inline-block;
-        justify-content: center;
-
-    }
-
-@media screen and (min-width: 321px) and (max-width: 480px){
-    #orderSettings {
-        margin: 10%;
-    }
-
-    #createNote {
-        display: inline-flex;
-    }
-}
-
-@media screen, print and (min-width: 481px) and (max-width: 800px){
-    #settingOptions {
-        display: inline-block;
-    }
-}
-
-/* end of MEDIA QUERIES*/
-
-
-
-
-
-
-
-
-
-
-
 
 /* create/edit note */
 .input-row {
@@ -144,10 +111,21 @@ main {
 
 /* End of create/edit notes */
 
-/***************************************
-* screen size from 720px
-*/
-@media (min-width: 720px) {
+/* start of MEDIA QUERIES */
+
+@media (min-width: 800px){
+    #setting {
+        width: 90%;
+    }
+
+    #setting button {
+        display: inline;
+        width: inherit;
+    }
+
+    .orderButtonHolder {
+        display: inline-block;
+    }
 
     /* create/edit note */
     .input-row {
@@ -171,3 +149,4 @@ main {
         margin-left: 20%;
     }
 }
+/* end of MEDIA QUERIES*/
