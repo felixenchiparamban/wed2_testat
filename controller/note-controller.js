@@ -25,6 +25,7 @@ module.exports.showNotes = function (req, res) {
         var sortedNoteList = noteUtils.sortNotes(notes, session.sort, session.orderValue);
 
         res.render("index", {
+            title: "Notes",
             notes: sortedNoteList,
             sort: session.sort,
             showFinished: !session.showFinished,
