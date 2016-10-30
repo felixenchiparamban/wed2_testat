@@ -1,4 +1,3 @@
-
 body {
     min-width: 320px;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -35,19 +34,9 @@ main {
     width: 100%;
 }
 
-.notes {
-    background-color: #FFFFA5;
-    border-radius: 10px;
-}
-
 #actionButtons {
     margin: 1.5rem 0;
 }
-
-.editButton {
-    float: right;
-}
-
 
 /* end of buttons*/
 
@@ -82,21 +71,19 @@ main {
     overflow: hidden;
 }
 
+.editButton {
+    float: right;
+}
+
 .notes{
   align-content: center;
   border: solid;
   display: block;
   margin: 1%;
   padding: 1%;
-
+  background-color: #FFFFA5;
+  border-radius: 10px;
 }
-
-#dueTime {
-    display: block;
-    padding-bottom: 0.6%;
-}
-
-
 
 /* end of show notes*/
 
@@ -121,10 +108,6 @@ main {
     #setting button {
         display: inline;
         width: inherit;
-    }
-
-    .orderButtonHolder {
-        display: inline-block;
     }
 
     /* create/edit note */

@@ -3,12 +3,10 @@ var db = new Datastore({filename: "./data/notes.db", autoload: true});
 
 function insertNote(noteObj, callback) {
     noteObj.createdDate = new Date();
-    console.log("insert new note: " + noteObj);
     db.insert(noteObj, callback);
 }
 
 function updateNote(noteObj, callback) {
-    console.log("updating note: " + noteObj);
     db.update(
         {_id: noteObj._id},
         {

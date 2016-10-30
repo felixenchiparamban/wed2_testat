@@ -1,4 +1,3 @@
 {"_id":"0IL1neSxlWZfWFkW","title":"WED Testat 2","description":"Create and Edit notes (backend logic and frontend design)","priority":"5","dueDate":{"$$date":1478991600000},"isFinished":false,"createdDate":{"$$date":1477156565319},"modifiedDate":{"$$date":1477161033096}}
 {"_id":"BqMyWmiXD9Q5eclm","title":"Hello World","description":"","priority":"3","dueDate":{"$$date":1511478000000},"isFinished":false,"createdDate":{"$$date":1477156265323}}
-{"_id":"Shib1Dc1zI8L2V73","title":"wertwert 45","description":"","priority":"4","dueDate":{"$$date":1475445600000},"isFinished":true,"createdDate":{"$$date":1477845649705},"modifiedDate":{"$$date":1477845670710}}
 {"_id":"b2Wje4NeEQiAg53k","title":"ID is now set","description":"hello world","priority":"2","dueDate":{"$$date":1477173600000},"isFinished":true,"createdDate":{"$$date":1477161549142},"modifiedDate":{"$$date":1477161562635}}

@@ -9,18 +9,30 @@
 
                 <h4>Sorted by: </h4>
                 <div class="orderButtonHolder">
-                    <button type="submit" name="sort" value="dueDate" class="glyphicon {{sortOrderStyle sort orderValue "dueDate"}} btn btn-default " > By Finish Date </button>
+                    <button type="submit" name="sort" value="dueDate"
+                            class="glyphicon {{sortOrderStyle sort orderValue "dueDate"}} btn btn-default ">
+                        By Finish Date
+                    </button>
 
-                    <button type="submit" name="sort" value="createdDate" class="glyphicon {{sortOrderStyle sort orderValue "createdDate"}} btn btn-default "> By created Date </button>
+                    <button type="submit" name="sort" value="createdDate"
+                            class="glyphicon {{sortOrderStyle sort orderValue "createdDate"}} btn btn-default ">
+                        By created Date
+                    </button>
 
-                    <button type="submit" name="sort" value="priority" class="glyphicon {{sortOrderStyle sort orderValue "priority"}} btn btn-default "> By Importance </button>
+                    <button type="submit" name="sort" value="priority"
+                            class="glyphicon {{sortOrderStyle sort orderValue "priority"}} btn btn-default ">
+                        By Importance
+                    </button>
 
                 </div>
-                    </div>
+            </div>
             <div id="actionButtons">
-                <button type="submit" class="showingNodes btn btn-default" name="showFinished" value="{{showFinished}}">{{typesOfNotesText showFinished}}</button>
+                <button type="submit" class="btn btn-default" name="showFinished"
+                        value="{{showFinished}}">{{typesOfNotesText showFinished}}</button>
 
-                <button type="submit" id="styleSwitcher" name="style" value="{{switchStyle style}}" class="btn btn-default"> Style switcher </button>
+                <button type="submit" id="styleSwitcher" name="style" value="{{switchStyle style}}"
+                        class="btn btn-default"> Style switcher
+                </button>
             </div>
 
         </form>
@@ -33,21 +45,28 @@
         <header>
             <h2> Your Note list </h2>
         </header>
-        {{#each notes}}
-            <form method="get" action="/edit/{{_id}}" class="notes">
+        {{#if notes.length}}
+            {{#each notes}}
+                <form method="get" action="/edit/{{_id}}" class="notes">
 
-                <h3>Title: {{title}}</h3>
+                    <h3>Title: {{title}}</h3>
 
-                <p>description: {{description}}</p>
+                    <p>description: {{description}}</p>
 
-                <p>priority: {{priority}}</p>
+                    <p>priority: {{priority}}</p>
 
-                <time id="dueTime" datetime="{{dateFormat dueDate 'MMM Do YY'}}">dueDate: {{dateFormat dueDate 'MMM Do YY'}}</time>
-                <div class="noteBottom">
-                    <input type="checkbox" name="isFinished" value="isFinished" {{checkboxState isFinished}} disabled readonly class="isFinishedStatus"> isFinished
-                    <button type="submit" class="btn btn-primary editButton"> Edit Note </button>
-                </div>
-            </form>
-        {{/each}}
+                    <time id="dueTime" datetime="{{dateFormat dueDate 'MMM Do YY'}}">
+                        dueDate: {{dateFormat dueDate 'MMM Do YY'}}</time>
+                    <div class="noteBottom">
+                        <input type="checkbox" name="isFinished" value="isFinished" {{checkboxState isFinished}}
+                               disabled  class="isFinishedStatus"> isFinished
+                        <button type="submit" class="btn btn-primary editButton"> Edit Note</button>
+                    </div>
+                </form>
+            {{/each}}
+        {{else}}
+            <div class="alert alert-danger" role="alert"> No notes found</div>
+        {{/if}}
+
     </section>
 </main>
