@@ -43,7 +43,8 @@ module.exports.showNotes = function (req, res) {
 
 module.exports.showCreateNoteView = function (req, res) {
     let viewData = {
-        title: "Create a note"
+        title: "Create a note",
+        style: req.session.style
     };
 
     res.render("updateNoteDetail.hbs", viewData);
