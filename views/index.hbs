@@ -9,17 +9,17 @@
 
                 <h4>Sorted by: </h4>
                 <div class="orderButtonHolder">
-                    <button type="submit" name="sort" value="dueDate"
+                    <button type="submit" name="sort" value="dueDate/{{switchOrderValue orderValue}}"
                             class="glyphicon {{sortOrderStyle sort orderValue "dueDate"}} btn btn-default ">
                         By Finish Date
                     </button>
 
-                    <button type="submit" name="sort" value="createdDate"
+                    <button type="submit" name="sort" value="createdDate/{{switchOrderValue orderValue}}"
                             class="glyphicon {{sortOrderStyle sort orderValue "createdDate"}} btn btn-default ">
                         By created Date
                     </button>
 
-                    <button type="submit" name="sort" value="priority"
+                    <button type="submit" name="sort" value="priority/{{switchOrderValue orderValue}}"
                             class="glyphicon {{sortOrderStyle sort orderValue "priority"}} btn btn-default ">
                         By Importance
                     </button>
@@ -53,13 +53,16 @@
 
                     <p>description: {{description}}</p>
 
-                    <p>priority: {{priority}}</p>
+                    <p>priority:
+                        {{{priorityTimes priority}}}
+                    </p>
 
                     <time id="dueTime" datetime="{{dateFormat dueDate 'MMM Do YY'}}">
                         dueDate: {{dateFormat dueDate 'MMM Do YY'}}</time>
                     <div class="noteBottom">
-                        <input type="checkbox" name="isFinished" value="isFinished" {{checkboxState isFinished}}
-                               disabled  class="isFinishedStatus"> isFinished
+                        <label><input type="checkbox" name="isFinished" value="isFinished" {{checkboxState isFinished}}
+                                      disabled  class="isFinishedStatus">isFinished</label>
+
                         <button type="submit" class="btn btn-primary editButton"> Edit Note</button>
                     </div>
                 </form>

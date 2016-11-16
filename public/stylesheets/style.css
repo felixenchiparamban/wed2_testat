@@ -68,11 +68,11 @@ main {
 /* show notes */
 
 .noteBottom {
-    overflow: hidden;
+   display: flex;
+    justify-content: space-between;
 }
 
 .editButton {
-    float: right;
 }
 
 .notes{
@@ -83,6 +83,10 @@ main {
   padding: 1%;
   background-color: #FFFFA5;
   border-radius: 10px;
+}
+
+.priority{
+    color: orangered;
 }
 
 /* end of show notes*/
@@ -112,11 +116,10 @@ main {
 
     /* create/edit note */
     .input-row {
-        overflow: hidden;
+        display: flex;
     }
 
     .input-row .control-label {
-        float: left;
         width: 20%;
         text-align: right;
         padding-top: 0.7rem;

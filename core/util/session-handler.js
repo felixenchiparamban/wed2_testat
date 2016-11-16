@@ -12,13 +12,13 @@ function initializeUserPreferences(req){
     }
 
     if(req.query.sort){
-        if(session.sort == req.query.sort){
-            session.orderValue = session.orderValue == "asc" ? "desc" : "asc";
-        } else {
-            session.sort = req.query.sort;
-            session.orderValue = "asc";
-        }
+        var sortOptions = req.query.sort.split('/');
+        session.sort = sortOptions[0];
+        session.orderValue = sortOptions[1];
     }
+
+
+
     if(req.query.style){
         session.style = req.query.style;
     }

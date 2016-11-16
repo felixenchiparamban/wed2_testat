@@ -33,3 +33,14 @@ hbs.registerHelper('sortOrderStyle', function(sort, orderValue, currentButtonVal
     return "";
 });
 
+hbs.registerHelper('switchOrderValue', function(orderValue){
+    return orderValue == "asc" ? "desc" : "asc";
+});
+
+hbs.registerHelper('priorityTimes', function(n) {
+    var text = '';
+    for(var i = 0; i < n; ++i)
+        text += "<span class='glyphicon glyphicon-fire priority'></span>";
+    return text;
+});
+
